@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule } from '@angular/router';
 
 import { LandingPageModule } from './landing-page/landing-page.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     AppRoutingModule,
     LandingPageModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   exports: [ModalModule, NgbModule],

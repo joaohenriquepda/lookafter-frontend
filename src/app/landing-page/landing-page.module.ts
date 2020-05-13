@@ -9,13 +9,15 @@ import { CardComponent } from './carrousel/card/card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HeadlineComponent } from './headline/headline.component';
 
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     CarrouselComponent,
-    CardComponent
+    CardComponent,
+    HeadlineComponent
   ],
   imports: [
     CommonModule,
