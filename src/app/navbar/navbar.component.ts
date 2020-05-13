@@ -1,15 +1,15 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthUserService } from '../services/auth-user.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class NavbarComponent implements OnInit {
 
   modalRef: BsModalRef;
   createUserForm: FormGroup;
@@ -20,6 +20,7 @@ export class ToolbarComponent implements OnInit {
   errorInform = false;
   successInform = false;
   errorMessage = "";
+  isCollapsed = true;
 
   constructor(
     private fb: FormBuilder,
@@ -85,7 +86,6 @@ export class ToolbarComponent implements OnInit {
     )
   }
 
-
   checkPassword(value) {
     if (this.createUserForm.value.password === this.createUserForm.value.password_confirmation) {
       this.isValidForm = true;
@@ -116,4 +116,5 @@ export class ToolbarComponent implements OnInit {
       email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     });
   }
+
 }

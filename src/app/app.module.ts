@@ -10,40 +10,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { RouterModule } from '@angular/router';
 
 import { LandingPageModule } from './landing-page/landing-page.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ToolbarComponent,
+    NavbarComponent,
     FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LandingPageModule,
-    NgbModule,
     RouterModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    CollapseModule.forRoot(),
   ],
   providers: [],
-  exports: [ModalModule, NgbModule],
+  exports: [ModalModule, CollapseModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
