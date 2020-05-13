@@ -1,0 +1,38 @@
+<div class=body>
+    <div class="container contact">
+        <div class="title">
+            <h2>We can help you?</h2>
+        </div>
+
+        <form [formGroup]="contactForm">
+            <label for=""></label>
+            <input type="text" formControlName="title" name="title" class="form-control" placeholder="Title">
+            <label for=""></label>
+            <input type="text" formControlName="email" name="email" class="form-control" placeholder="Email contact">
+            <label for=""></label>
+            <textarea rows="5" cols="10" formControlName="description" name="description" class="form-control"
+                placeholder="Description"></textarea>
+            <br />
+            <button type="submit" class="btn button-clr btn-lg btn-block">Send</button>
+        </form>
+
+        <br />
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="material-icons">email</span>
+                <p>confort@lookafter.com</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="material-icons">phone</span>
+                <p>1-971-diaper</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="material-icons">location_on</span>
+                <p>Sacramento, California</p>
+            </div>
+        </div>
+
+    </div>
+</div>

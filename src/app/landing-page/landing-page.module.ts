@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CarrouselComponent } from './carrousel/carrousel.component'
@@ -11,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HeadlineComponent } from './headline/headline.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -19,14 +25,18 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     CarrouselComponent,
     CardComponent,
     HeadlineComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
     ModalModule.forRoot(),
     RouterModule,
     NgbModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [NgbModule]
 })
