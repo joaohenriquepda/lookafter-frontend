@@ -3,6 +3,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthUserService } from '../services/auth-user.service';
 import { Router } from '@angular/router';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -22,6 +24,10 @@ export class NavbarComponent implements OnInit {
   errorMessage = "";
   isCollapsed = true;
   navbarOpen = false;
+  faCoffee = faCoffee
+  faFacebook = faFacebook;
+  faInstagram = faInstagram;
+  faYoutube = faYoutube;
 
   constructor(
     private fb: FormBuilder,
@@ -34,7 +40,6 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
-
 
   ngOnInit(): void {
     this.buildUserForm();
@@ -72,6 +77,8 @@ export class NavbarComponent implements OnInit {
     )
   }
 
+
+
   authUser() {
     this.auth.authUser(this.loginForm.value).subscribe(
       success => {
@@ -90,6 +97,27 @@ export class NavbarComponent implements OnInit {
         }, 6000);
       }
     )
+  }
+
+  sendPassword() {
+    this.auth.recoveryPassword(this.recoveryForm.value).subscribe(
+      success => {
+        this.successInform = !this.successInform;
+        setTimeout(() => {
+          this.successInform = !this.successInform;
+          this.modalRef.hide();
+        }, 6000);
+      },
+      error => {
+        // Return error message and show alert
+        this.errorMessage = error.error.email ? "Email not registered" : "An error has occurred"
+        this.errorInform = !this.errorInform
+        setTimeout(() => {
+          this.errorInform = !this.errorInform
+        }, 6000);
+      }
+    )
+
   }
 
   checkPassword(value) {

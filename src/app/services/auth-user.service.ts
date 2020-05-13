@@ -26,4 +26,14 @@ export class AuthUserService {
     };
     return this.http.post(environment.serverUrl + '/auth/login', data, httpOptions);
   }
+
+
+  recoveryPassword(data) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(environment.serverUrl + '/users/recovery', data, httpOptions);
+  }
 }
