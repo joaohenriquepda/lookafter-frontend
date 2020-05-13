@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component'
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,12 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: '404', component: PageNotFoundComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
