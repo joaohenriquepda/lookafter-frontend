@@ -1,0 +1,33 @@
+.footer {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #ff03c8;
+    color: white;
+    font-weight: 600;
+}
+.footer {
+    height: 15%;
+    width: 100%;
+}
+
+.material-icons {
+    text-align: center;
+    align-content: center;
+}
+
+.image-cover {
+    margin: 5px auto 5px;
+    display: block;
+    object-fit: cover;
+    width: 60%;
+    height: 60%;
+}
+
+.image:hover {
+    transform: scale(1.25);
+}
