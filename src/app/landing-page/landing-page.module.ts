@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HeadlineComponent } from './headline/headline.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeadlineComponent } from './headline/headline.component';
     LandingPageComponent,
     CarrouselComponent,
     CardComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    TestimonialComponent
   ],
   imports: [
     CommonModule,
