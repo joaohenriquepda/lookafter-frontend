@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from './landing-page.component';
+import { LandingPageComponent } from '../landing-page/landing-page/landing-page.component';
+import { CardComponent } from './carrousel/card/card.component'
+import { CarrouselComponent } from './carrousel/carrousel.component'
 
 const routes: Routes = [
   {

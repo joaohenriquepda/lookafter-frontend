@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingPageComponent } from '../landing-page.component';
+import { CarrouselComponent } from './carrousel.component';
 
-describe('LandingPageComponent', () => {
-  let component: LandingPageComponent;
-  let fixture: ComponentFixture<LandingPageComponent>;
+describe('CarrouselComponent', () => {
+  let component: CarrouselComponent;
+  let fixture: ComponentFixture<CarrouselComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent ]
+      declarations: [ CarrouselComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandingPageComponent);
+    fixture = TestBed.createComponent(CarrouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

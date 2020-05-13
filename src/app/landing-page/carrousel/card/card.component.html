@@ -1,0 +1,31 @@
+<div class="card" (click)="open(object)">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <img [src]="information.src" class="image-cover" alt="">
+            </div>
+            <div class="col-sm-6">
+                <h5 class="card-title">{{information.name}}</h5>
+                <p class="card-text">{{information.description}}</p>
+                <p>{{information.size}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #object let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-create-user">{{information.name}}</h4>
+    </div>
+    <div class="modal-body">
+        <img [src]="information.src" class="image-cover" alt="">
+        <h3>{{information.description}}</h3>
+        <label for=""> Size </label>
+        <h5>{{information.size}}</h5>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg btn-block"
+            (click)="modalRef.hide()">Cancel</button>
+    </div>
+</ng-template>

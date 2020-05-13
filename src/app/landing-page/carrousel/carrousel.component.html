@@ -1,0 +1,46 @@
+<!-- carousel -->
+<div class="carrousel-box">
+
+    <div class="carousel" (mouseover)="stopCarrousel()" (mouseout)="initCarrousel()">
+
+        <ng-container *ngFor="let slide of slides; let i = index">
+
+            <div class="slide" *ngIf="i === currentSlide">
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="row">
+                            <div class="col-sm-6 cel">
+                                <app-cards [information]="slide[0]"></app-cards>
+                            </div>
+                            <div class="col-sm-6 cel">
+                                <app-cards [information]="slide[1]"></app-cards>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 cel">
+                                <app-cards [information]="slide[2]"></app-cards>
+                            </div>
+                            <div class="col-sm-6 cel">
+                                <app-cards [information]="slide[3]"></app-cards>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-5 headline">
+                        <app-headline></app-headline>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- controls -->
+        <button class="control prev" (click)="onPreviousClick()">
+            <span class="arrow left"></span>
+        </button>
+        <button class="control next" (click)="onNextClick()">
+            <span class="arrow right"></span>
+        </button>
+    </div>
+</div>
