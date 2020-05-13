@@ -3,26 +3,178 @@
   <img width="40" />
   <span>LookAfter</span>
   <div class="spacer"></div>
-  <!-- <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-        <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-          <rect width="400" height="400" fill="none"/>
-          <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
-        </svg>
-      </a> -->
 
-  <div class="btn-group" dropdown>
-    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-      aria-controls="dropdown-basic">
-      Button dropdown <span class="caret"></span>
-    </button>
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="divider dropdown-divider"></li>
-      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-      </li>
-    </ul>
-  </div>
+
+
+  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+    <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+      <rect width="400" height="400" fill="none" />
+      <path
+        d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+        fill="#fff" />
+    </svg>
+  </a>
+
+  <div class="spacer"></div>
 
 </div>
+
+
+
+
+
+<ng-template #createUser let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-create-user">Create New User</h4>
+  </div>
+  <div class="modal-body">
+
+    <p *ngIf="errorInform">
+      <ngb-alert type="danger" [dismissible]="false">
+        <strong>Warning!</strong> {{errorMessage}}
+      </ngb-alert>
+    </p>
+
+    <p *ngIf="successInform">
+      <ngb-alert type="success" [dismissible]="false">
+        <strong>Success</strong>
+        User has been registered
+      </ngb-alert>
+    </p>
+
+    <form [formGroup]="createUserForm">
+      <label for="fullname">Full name</label>
+      <input type="text" formControlName="fullname" minlength="3" name="fullname" class="form-control"
+        placeholder="Fullname">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
+      <label for="phone">Phone</label>
+      <input type="text" formControlName="phone" name="phone" class="form-control">
+
+      <label for="password">Password</label>
+      <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password" name="password"
+        class="form-control">
+      <label for="password">Password Confirmation</label>
+      <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password_confirmation"
+        name="password_confirmation" class="form-control">
+
+      <br />
+
+
+      <span class="form-text text-danger"
+        *ngIf="(createUserForm.controls.fullname.errors) && (createUserForm.controls.fullname.dirty)">
+        Fullname is required
+        <p></p>
+        Fullname must be more than 3 characters
+      </span>
+
+      <span class="form-text text-danger"
+        *ngIf="createUserForm.controls.email.errors && createUserForm.controls.email.touched">
+        Email must be valid
+      </span>
+
+      <span class="form-text text-danger" *ngIf="createUserForm.controls.password.errors ">
+        Password is required
+      </span>
+
+      <span class="form-text text-danger" *ngIf="!(isValidForm && createUserForm.controls.password.valid)">
+        Password and Password confirmation must be equals
+      </span>
+
+
+      <span class="form-text text-danger"
+        *ngIf="createUserForm.controls.phone.errors && (createUserForm.controls.phone.dirty || createUserForm.controls.phone.pristine)">
+        Phone only be numeric
+        <br />
+        Phone must be a maximum of 9 characters
+      </span>
+
+      <br />
+
+      <button type="button" [disabled]="!(createUserForm.valid && isValidForm)" (click)="registerUser()"
+        class="btn btn-primary btn-lg btn-block">
+        Register </button>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #login let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-login">Login</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <p *ngIf="errorInform">
+          <ngb-alert type="danger" [dismissible]="false">
+            <strong>Warning!</strong> An error has occurred
+          </ngb-alert>
+        </p>
+
+        <form [formGroup]="loginForm">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" name="password" class="form-control">
+
+          <br />
+          <span class="form-text text-danger"
+            *ngIf="loginForm.controls.email.errors && (loginForm.controls.email.dirty || loginForm.controls.email.pristine) ">
+            Email must be valid
+          </span>
+
+          <span class="form-text text-danger" *ngIf="loginForm.controls.password.errors ">
+            Password is required
+          </span>
+
+
+          <button type="submit" [disabled]="!(loginForm.valid)" class="btn button-clr btn-success btn-lg btn-block"
+            (click)="authUser()">Login</button>
+
+          <div class="row">
+            <button type="link" class="recovery btn btn-link btn-lg btn-block" (click)="open(recoveryPassword)">Recovery
+              Password</button>
+          </div>
+
+        </form>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
+
+<ng-template #recoveryPassword let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-login">Recovery Password</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <form [formGroup]="recoveryForm">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
+          <br />
+          <span class="form-text text-danger"
+            *ngIf="recoveryForm.controls.email.errors && recoveryForm.controls.email.touched">
+            Email must be valid
+          </span>
+
+          <button type="submit" [disabled]="!(recoveryForm.valid)"
+            class="btn button-clr btn-success btn-lg btn-block">Send</button>
+
+        </form>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>

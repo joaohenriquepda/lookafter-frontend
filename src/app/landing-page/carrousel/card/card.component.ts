@@ -9,11 +9,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class CardComponent implements OnInit {
 
   @Input() information;
-  closeResult = '';
-
   modalRef: BsModalRef;
 
-  
   constructor(
     private modalService: BsModalService
   ) { }

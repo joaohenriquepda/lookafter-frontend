@@ -1,14 +1,20 @@
 .toolbar {
-    position: absolute;
+    // position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #ffdd03;
     color: white;
     font-weight: 600;
+}
+
+span {
+    color: #636363;
+    // font-weight: 90px;
+    font-size: 40px;
 }
 
 .toolbar img {
@@ -38,4 +44,37 @@ svg.material-icons {
 }
 .spacer {
     flex: 1;
-  }
+}
+
+.navbar {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #ffdd03;
+    color: white;
+    font-weight: 600;
+}
+
+.navbar-brand {
+    color: #636363;
+}
+
+.navbar img {
+    margin: 0 16px;
+}
+
+.button-clr {
+    background-color: #eb78c7;
+}
+
+.example-icon {
+    padding: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}

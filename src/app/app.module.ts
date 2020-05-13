@@ -13,12 +13,12 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { RouterModule } from '@angular/router';
 
 import { LandingPageModule } from './landing-page/landing-page.module';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -27,6 +27,7 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     AppComponent,
     PageNotFoundComponent,
     ToolbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,10 +40,10 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    BsDropdownModule.forRoot()
+
   ],
   providers: [],
-  exports: [ModalModule, NgbModule, BsDropdownModule],
+  exports: [ModalModule, NgbModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
