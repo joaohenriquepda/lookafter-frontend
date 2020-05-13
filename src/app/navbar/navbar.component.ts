@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   successInform = false;
   errorMessage = "";
   isCollapsed = true;
+  navbarOpen = false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +29,11 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService
   ) { }
+
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 
 
   ngOnInit(): void {

@@ -16,3 +16,13 @@ h3 {
 .body:hover {
     transform: scale(1.025);
 }
+
+
+@media (max-width: 450px) {
+
+.body{
+    background-color: royalblue;
+    width: 10%;
+    height: 15%;
+}
+}

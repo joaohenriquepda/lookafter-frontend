@@ -1,225 +1,201 @@
-<nav
-  class="navbar navbar-expand-lg navbar-transparent navbar navbar-main navbar-expand-lg navbar-light headroom headroom--top headroom--pinned">
-  <a class="navbar-brand" href="#">LookAfter</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto"></ul>
-    <!-- <ul class="navbar-nav mr-auto">
-      <li class="nav-item active image">
-        <a href="https://www.facebook.com" target="_blank">
-          <img class="image-cover nav-link" src="../../assets/sociamedia/facebook64.png" alt="">
-        </a>
-      </li>
-      <li class="nav-item image">
-        <a href="https://www.instagram.com/" target="_blank">
-          <img class="image-cover nav-link" src="../../assets/sociamedia/instagram64.png" alt="">
-        </a>
-      </li>
-      <li class="nav-item image">
-        <a href="https://www.youtube.com" target="_blank">
-          <img class="image-cover nav-link" src="../../assets/sociamedia/youtube64.png" alt="">
-        </a>
-      </li>
-    </ul> -->
-
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a href="https://www.facebook.com" target="_blank">
-          Facebook
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="https://www.instagram.com/" target="_blank">
-          Instragram
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="https://www.youtube.com" target="_blank">
-          Youtube
-        </a>
-      </li>
-      <li class="nav-item ">
-
-      </li>
-    </ul>
-
-    <div class="dropdown">
-      <a class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <svg class="bi bi-person-fill" width="3em" height="30px" viewBox="0 0 16 16" fill=""
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
-            clip-rule="evenodd" />
-        </svg>
-        <span class="navbar-toggler-icon"></span>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" (click)="open(createUser)">Register new user </a>
-        <a class="dropdown-item" (click)="open(login)">Login</a>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-main navbar-expand-lg navbar-light headroom--pinned sticky-top">
+    <div>
+        <a class="navbar-brand smooth-scroll" href="#home">Look After</a>
     </div>
 
+    <button class="navbar-toggler btn-navbar-toggler-style" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" id="navbar-toggler-icon-style"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Item 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Item 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Item 3</a>
+            </li>
+        </ul>
 
-  </div>
+        <div class="dropdown" is >
+            <a class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <svg class="bi bi-person-fill" width="3em" height="30px" viewBox="0 0 16 16" fill=""
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" (click)="open(createUser)">Register new user </a>
+                <a class="dropdown-item" (click)="open(login)">Login</a>
+            </div>
+        </div>
+    </div>
 </nav>
 
 <ng-template #createUser let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-create-user">Create New User</h4>
-  </div>
-  <div class="modal-body">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-create-user">Create New User</h4>
+    </div>
+    <div class="modal-body">
 
-    <p *ngIf="errorInform">
-      <ngb-alert type="danger" [dismissible]="false">
-        <strong>Warning!</strong> {{errorMessage}}
-      </ngb-alert>
-    </p>
+        <p *ngIf="errorInform">
+            <ngb-alert type="danger" [dismissible]="false">
+                <strong>Warning!</strong> {{errorMessage}}
+            </ngb-alert>
+        </p>
 
-    <p *ngIf="successInform">
-      <ngb-alert type="success" [dismissible]="false">
-        <strong>Success</strong>
-        User has been registered
-      </ngb-alert>
-    </p>
+        <p *ngIf="successInform">
+            <ngb-alert type="success" [dismissible]="false">
+                <strong>Success</strong>
+                User has been registered
+            </ngb-alert>
+        </p>
 
-    <form [formGroup]="createUserForm">
-      <label for="fullname">Full name</label>
-      <input type="text" formControlName="fullname" minlength="3" name="fullname" class="form-control"
-        placeholder="Fullname">
-      <label for="email">Email</label>
-      <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
-      <label for="phone">Phone</label>
-      <input type="text" formControlName="phone" name="phone" class="form-control">
+        <form [formGroup]="createUserForm">
+            <label for="fullname">Full name</label>
+            <input type="text" formControlName="fullname" minlength="3" name="fullname" class="form-control"
+                placeholder="Fullname">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
+            <label for="phone">Phone</label>
+            <input type="text" formControlName="phone" name="phone" class="form-control">
 
-      <label for="password">Password</label>
-      <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password" name="password"
-        class="form-control">
-      <label for="password">Password Confirmation</label>
-      <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password_confirmation"
-        name="password_confirmation" class="form-control">
+            <label for="password">Password</label>
+            <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password" name="password"
+                class="form-control">
+            <label for="password">Password Confirmation</label>
+            <input type="password" (ngModelChange)="checkPassword($event)" formControlName="password_confirmation"
+                name="password_confirmation" class="form-control">
 
-      <br />
-
-
-      <span class="form-text text-danger"
-        *ngIf="(createUserForm.controls.fullname.errors) && (createUserForm.controls.fullname.dirty)">
-        Fullname is required
-        <br />
-        Fullname must be more than 3 characters
-      </span>
-
-      <span class="form-text text-danger"
-        *ngIf="createUserForm.controls.email.errors && createUserForm.controls.email.touched">
-        Email must be valid
-      </span>
-
-      <span class="form-text text-danger" *ngIf="createUserForm.controls.password.errors ">
-        Password is required
-      </span>
-
-      <span class="form-text text-danger" *ngIf="!(isValidForm && createUserForm.controls.password.valid)">
-        Password and Password confirmation must be equals
-      </span>
+            <br />
 
 
-      <span class="form-text text-danger"
-        *ngIf="createUserForm.controls.phone.errors && (createUserForm.controls.phone.dirty || createUserForm.controls.phone.pristine)">
-        Phone only be numeric
-        <br />
-        Phone must be a maximum of 9 characters
-      </span>
+            <span class="form-text text-danger"
+                *ngIf="(createUserForm.controls.fullname.errors) && (createUserForm.controls.fullname.dirty)">
+                Fullname is required
+                <br />
+                Fullname must be more than 3 characters
+            </span>
 
-      <br />
+            <span class="form-text text-danger"
+                *ngIf="createUserForm.controls.email.errors && createUserForm.controls.email.touched">
+                Email must be valid
+            </span>
 
-      <button type="button" [disabled]="!(createUserForm.valid && isValidForm)" (click)="registerUser()"
-        class="btn btn-primary btn-lg btn-block">
-        Register </button>
+            <span class="form-text text-danger" *ngIf="createUserForm.controls.password.errors ">
+                Password is required
+            </span>
 
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
-  </div>
+            <span class="form-text text-danger" *ngIf="!(isValidForm && createUserForm.controls.password.valid)">
+                Password and Password confirmation must be equals
+            </span>
+
+
+            <span class="form-text text-danger"
+                *ngIf="createUserForm.controls.phone.errors && (createUserForm.controls.phone.dirty || createUserForm.controls.phone.pristine)">
+                Phone only be numeric
+                <br />
+                Phone must be a maximum of 9 characters
+            </span>
+
+            <br />
+
+            <button type="button" [disabled]="!(createUserForm.valid && isValidForm)" (click)="registerUser()"
+                class="btn btn-primary btn-lg btn-block">
+                Register </button>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
+    </div>
 </ng-template>
 
 <ng-template #login let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-login">Login</h4>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-login">Login</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
 
-        <p *ngIf="errorInform">
-          <ngb-alert type="danger" [dismissible]="false">
-            <strong>Warning!</strong> An error has occurred
-          </ngb-alert>
-        </p>
+                <p *ngIf="errorInform">
+                    <ngb-alert type="danger" [dismissible]="false">
+                        <strong>Warning!</strong> An error has occurred
+                    </ngb-alert>
+                </p>
 
-        <form [formGroup]="loginForm">
-          <label for="email">Email</label>
-          <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
-          <label for="password">Password</label>
-          <input type="password" formControlName="password" name="password" class="form-control">
+                <form [formGroup]="loginForm">
+                    <label for="email">Email</label>
+                    <input type="email" formControlName="email" name="email" class="form-control"
+                        placeholder="Email Contact">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" name="password" class="form-control">
 
-          <br />
-          <span class="form-text text-danger"
-            *ngIf="loginForm.controls.email.errors && (loginForm.controls.email.dirty || loginForm.controls.email.pristine) ">
-            Email must be valid
-          </span>
+                    <br />
+                    <span class="form-text text-danger"
+                        *ngIf="loginForm.controls.email.errors && (loginForm.controls.email.dirty || loginForm.controls.email.pristine) ">
+                        Email must be valid
+                    </span>
 
-          <span class="form-text text-danger" *ngIf="loginForm.controls.password.errors ">
-            Password is required
-          </span>
+                    <span class="form-text text-danger" *ngIf="loginForm.controls.password.errors ">
+                        Password is required
+                    </span>
 
 
-          <button type="submit" [disabled]="!(loginForm.valid)" class="btn button-clr btn-success btn-lg btn-block"
-            (click)="authUser()">Login</button>
+                    <button type="submit" [disabled]="!(loginForm.valid)"
+                        class="btn button-clr btn-success btn-lg btn-block" (click)="authUser()">Login</button>
 
-          <div class="row">
-            <button type="link" class="recovery btn btn-link btn-lg btn-block" (click)="open(recoveryPassword)">Recovery
-              Password</button>
-          </div>
+                    <div class="row">
+                        <button type="link" class="recovery btn btn-link btn-lg btn-block"
+                            (click)="open(recoveryPassword)">Recovery
+                            Password</button>
+                    </div>
 
+                </form>
+            </div>
         </form>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
+    </div>
 </ng-template>
 
 
 <ng-template #recoveryPassword let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-login">Recovery Password</h4>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <form [formGroup]="recoveryForm">
-          <label for="email">Email</label>
-          <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email Contact">
-          <br />
-          <span class="form-text text-danger"
-            *ngIf="recoveryForm.controls.email.errors && recoveryForm.controls.email.touched">
-            Email must be valid
-          </span>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-login">Recovery Password</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <form [formGroup]="recoveryForm">
+                    <label for="email">Email</label>
+                    <input type="email" formControlName="email" name="email" class="form-control"
+                        placeholder="Email Contact">
+                    <br />
+                    <span class="form-text text-danger"
+                        *ngIf="recoveryForm.controls.email.errors && recoveryForm.controls.email.touched">
+                        Email must be valid
+                    </span>
 
-          <button type="submit" [disabled]="!(recoveryForm.valid)"
-            class="btn button-clr btn-success btn-lg btn-block">Send</button>
+                    <button type="submit" [disabled]="!(recoveryForm.valid)"
+                        class="btn button-clr btn-success btn-lg btn-block">Send</button>
 
+                </form>
+            </div>
         </form>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
+    </div>
 </ng-template>

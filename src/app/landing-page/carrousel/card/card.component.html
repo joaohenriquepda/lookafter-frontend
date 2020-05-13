@@ -1,4 +1,4 @@
-<div class="card" (click)="open(object)">
+<!-- <div class="card" (click)="open(object)">
     <div class="card-body">
         <div class="row">
             <div class="col-sm-6">
@@ -10,6 +10,27 @@
                 <p>{{information.size}} </p>
             </div>
         </div>
+    </div>
+</div> -->
+
+<div class="">
+    <div class="">
+        <div class="row">
+            <div class="card" (click)="open(object)">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img [src]="information.src" class="image-cover" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="card-title">{{information.name}}</h5>
+                            <p class="card-text">{{information.description}}</p>
+                            <p>{{information.size}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
     </div>
 </div>
 
@@ -25,7 +46,6 @@
         <h5>{{information.size}}</h5>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-lg btn-block"
-            (click)="modalRef.hide()">Cancel</button>
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="modalRef.hide()">Cancel</button>
     </div>
 </ng-template>
