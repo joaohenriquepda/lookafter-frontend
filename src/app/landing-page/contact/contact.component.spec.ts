@@ -36,4 +36,27 @@ describe('ContactComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('not should render modal Success Inform for Contact Form when open component', () => {
+
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('#modalInformSucces')).toBeNull();
+
+  });
+
+  it('not should render modal Error Inform for Contact Form when open component', () => {
+
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('#modalInformError')).toBeNull();
+
+  });
+
+
+
 });

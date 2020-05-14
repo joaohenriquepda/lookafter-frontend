@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-main navbar-expand-lg navbar-light headroom--pinned sticky-top">
     <div>
-        <a class="navbar-brand smooth-scroll" class="title" [routerLink]="['landing']" >Look After</a>
+        <a class="navbar-brand smooth-scroll" id="title" [routerLink]="['landing']" >Look After</a>
     </div>
 
     <button class="navbar-toggler btn-navbar-toggler-style" type="button" data-toggle="collapse"
@@ -39,8 +39,8 @@
                 <span class="navbar-toggler-icon"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" [hidden]="!(userAuth === null)" (click)="open(createUser)">Register New User </a>
-                <a class="dropdown-item" [hidden]="!(userAuth === null)" (click)="open(login)">Login</a>
+                <a class="dropdown-item" id="btnLogin" [hidden]="!(userAuth === null)" (click)="open(createUser)">Register New User </a>
+                <a class="dropdown-item" id="btnRegister" [hidden]="!(userAuth === null)" (click)="open(login)">Login</a>
                 <a class="dropdown-item" [hidden]="userAuth === null" [routerLink]="['dashboard']">Dashboard</a>
                 <a class="dropdown-item" [hidden]="(userAuth === null)" (click)="logout()">Logout</a>
             </div>
@@ -54,13 +54,13 @@
     </div>
     <div class="modal-body">
 
-        <p *ngIf="errorInform">
+        <p *ngIf="errorInform" id="errorInformCreateUser" >
             <ngb-alert type="danger" [dismissible]="false">
                 <strong>Warning!</strong> {{errorMessage}}
             </ngb-alert>
         </p>
 
-        <p *ngIf="successInform">
+        <p *ngIf="successInform" id="successInformCreateUser" >
             <ngb-alert type="success" [dismissible]="false">
                 <strong>Success</strong>
                 User has been registered
@@ -84,7 +84,6 @@
                 name="password_confirmation" class="form-control">
 
             <br />
-
 
             <span class="form-text text-danger"
                 *ngIf="(createUserForm.controls.fullname.errors) && (createUserForm.controls.fullname.dirty)">
@@ -127,7 +126,7 @@
     </div>
 </ng-template>
 
-<ng-template #login let-modal>
+<ng-template #login id="modalLogin" let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-login">Login</h4>
     </div>
@@ -135,7 +134,7 @@
         <form>
             <div class="form-group">
 
-                <p *ngIf="errorInform">
+                <p *ngIf="errorInform" id="errorInformLogin" >
                     <ngb-alert type="danger" [dismissible]="false">
                         <strong>Warning!</strong> An error has occurred
                     </ngb-alert>
@@ -178,7 +177,7 @@
 </ng-template>
 
 
-<ng-template #recoveryPassword let-modal>
+<ng-template #recoveryPassword id="modalRecoveryPassword" let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-login">Recovery Password</h4>
     </div>
