@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-main navbar-expand-lg navbar-light headroom--pinned sticky-top">
     <div>
-        <a class="navbar-brand smooth-scroll" href="#home">Look After</a>
+        <a class="navbar-brand smooth-scroll" [routerLink]="['landing']" >Look After</a>
     </div>
 
     <button class="navbar-toggler btn-navbar-toggler-style" type="button" data-toggle="collapse"
@@ -39,8 +39,10 @@
                 <span class="navbar-toggler-icon"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" (click)="open(createUser)">Register new user </a>
-                <a class="dropdown-item" (click)="open(login)">Login</a>
+                <a class="dropdown-item" [hidden]="!(userAuth === null)" (click)="open(createUser)">Register New User </a>
+                <a class="dropdown-item" [hidden]="!(userAuth === null)" (click)="open(login)">Login</a>
+                <a class="dropdown-item" [hidden]="userAuth === null" [routerLink]="['dashboard']">Dashboard</a>
+                <a class="dropdown-item" [hidden]="(userAuth === null)" (click)="logout()">Logout</a>
             </div>
         </div>
     </div>

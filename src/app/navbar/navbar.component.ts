@@ -13,6 +13,7 @@ import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg
 })
 export class NavbarComponent implements OnInit {
 
+  userAuth = JSON.parse(localStorage.getItem('token-lookafter'));
   modalRef: BsModalRef;
   createUserForm: FormGroup;
   loginForm: FormGroup;
@@ -34,7 +35,7 @@ export class NavbarComponent implements OnInit {
     private auth: AuthUserService,
     private router: Router,
     private modalService: BsModalService
-  ) { }
+  ) {  }
 
 
   toggleNavbar() {
@@ -50,6 +51,16 @@ export class NavbarComponent implements OnInit {
   // Open Modal - parameter 'modal' 
   open(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  getLocalToken() {
+    this.userAuth = JSON.parse(localStorage.getItem('token-lookafter'))
+  }
+
+  logout() {
+    localStorage.clear();
+    this.getLocalToken();
+    this.router.navigate(['landing']);
   }
 
   registerUser() {
@@ -83,10 +94,10 @@ export class NavbarComponent implements OnInit {
     this.auth.authUser(this.loginForm.value).subscribe(
       success => {
         // Save token in localstore
-        console.log(success);
         localStorage.setItem('token-lookafter', JSON.stringify(success));
+        this.modalRef.hide();
+        this.getLocalToken();
         this.router.navigate(['dashboard']);
-
       },
       error => {
         // Show error inform
