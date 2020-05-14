@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthUserService } from 'src/app/services/auth-user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  userAuth;
+  user: User;
 
-  ngOnInit(): void {
+
+  constructor(
+    private authUser: AuthUserService
+  ) {
+    this.getLocalToken()
   }
 
+  ngOnInit(): void {
+    this.authUser.getProfile(this.userAuth.token, this.userAuth.id).subscribe(
+      success => {
+        this.user = new User(success)
+      },
+      error => { }
+    )
+  }
+
+  getLocalToken() {
+    this.userAuth = JSON.parse(localStorage.getItem('token-lookafter'))
+  }
 }

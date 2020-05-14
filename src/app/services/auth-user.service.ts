@@ -27,6 +27,16 @@ export class AuthUserService {
     return this.http.post(environment.serverUrl + '/auth/login', data, httpOptions);
   }
 
+  getProfile(token, id) {
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: token
+      })
+    };
+    return this.http.get(environment.serverUrl + '/users/' +id, httpHeaders);
+  }
+
 
   recoveryPassword(data) {
     const httpOptions = {

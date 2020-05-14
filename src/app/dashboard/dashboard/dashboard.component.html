@@ -1,21 +1,16 @@
 <div class="body">
     <div class="container">
+        <br />
+        <h1 class="info">online shopping will be available soon.</h1>
+        <br />
         <div class="row">
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm">
-                            <img class="image-cover" alt="">
-                            <h5 class="card-title">"information.name"</h5>
-                            <p class="card-text">"information.description"</p>
-                            <p>"information.size"</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm card-container">
+                <img class="image-cover round" src="../../../assets/users/user.png" alt="user" />
+                <h3>{{user.fullname}}</h3>
+                <h6> Email: {{user.email}}</h6>
+                <h6> Phone: {{user.phone}}</h6>
+                <p>Date of registration: {{ user.created_at | date:"MM-dd-yyyy" }}</p>
             </div>
         </div>
-        <br />
-        <h1>online shopping will be available soon.</h1>
     </div>
 </div>

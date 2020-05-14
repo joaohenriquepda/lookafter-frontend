@@ -1,6 +1,6 @@
 <div class="carrousel-box body">
 
-
+    
     <div [hidden]="!(resolution > 900)" class="carousel" (mouseover)="stopCarrousel()" (mouseout)="initCarrousel()">
         <ng-container *ngFor="let slide of slides; let i = index">
 
@@ -32,7 +32,6 @@
             </div>
         </ng-container>
 
-        <!-- controls -->
         <button class="control prev" (click)="onPreviousClick()">
             <span class="arrow left"></span>
         </button>
@@ -44,21 +43,13 @@
 
     <div [hidden]="!(resolution < 900)" class="carousel" (mouseover)="stopCarrousel()" (mouseout)="initCarrousel()">
 
-        <!-- <ng-container>
-            <app-headline class="slide" *ngIf="0 === currentSlide"></app-headline>
-        </ng-container> -->
-        <!-- <ng-container>
-            <h1 class="slide"  *ngIf="1 === currentSlide" >iii</h1>
-        </ng-container> -->
-
-
         <ng-container *ngFor="let slide of slidesSmall; let i = index">
             <div class="slide" *ngIf="i === currentSlideSmall">
                 <app-card [information]="slide"></app-card>
             </div>
         </ng-container>
 
-        <!-- controls -->
+
         <button class="control prev" (click)="onPreviousClick()">
             <span class="arrow left"></span>
         </button>

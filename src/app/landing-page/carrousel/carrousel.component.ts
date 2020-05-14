@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { interval } from 'rxjs';
+import { ComunicationService } from 'src/app/services/comunication.service';
 
 @Component({
   selector: 'app-carrousel',
@@ -8,31 +9,38 @@ import { interval } from 'rxjs';
 })
 export class CarrouselComponent implements OnInit {
 
-  @Input() slides;
+  // @Input() slides;
+
+  slides: any;
   currentSlide = 0;
   currentSlideSmall = 0;
   subscription: any;
   resolution: any;
   slidesSmall: any;
 
-  constructor() {
-    this.initCarrousel();
+  constructor(
+    private comunicationService: ComunicationService
+
+  ) {
     this.resolution = window.innerWidth
+
+    this.comunicationService.getAllDiapers().subscribe(
+      success => {
+        this.slides = success;
+        this.slidesSmall = this.slides;
+        this.slides = [[success[0], success[1], success[2], success[3]], [success[4], success[5], success[6], success[7]]]
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   ngOnInit(): void {
-    this.calcSlides();
+    this.initCarrousel();
   }
-
-  calcSlides() {
-    console.log(this.slides[0]);
-
-    this.slidesSmall = [...this.slides[0], ...this.slides[1]]
-    console.log(this.slidesSmall);
-
-  }
-
   onPreviousClick() {
+
     const previous = this.currentSlide - 1;
     this.currentSlide = previous < 0 ? this.slides.length - 1 : previous;
 
